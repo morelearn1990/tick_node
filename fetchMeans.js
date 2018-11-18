@@ -3,7 +3,7 @@ const request = require('request');
 
 const wordUrl = 'https://fanyi.baidu.com/basetrans';
 const LENGTH = 20000; // 总单词数量 先来20000
-const FIRSR = 253;
+const FIRSR = 0;
 
 fetchWordsAndSave();
 

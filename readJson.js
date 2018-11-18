@@ -1,4 +1,4 @@
-import wordModel from "./mongo";
+const wordModel = require('./mongo');
 
 readJsonFile();
 
@@ -16,6 +16,6 @@ async function saveWord(data) {
       word
     });
     await wordDoc.save();
-    console.log("i", i);
+    console.log('i', i);
   }
 }
