@@ -4,7 +4,7 @@ const fs = require('fs');
 readJsonFile();
 
 async function readJsonFile() {
-  var data = fs.readFileSync(filePath());
+  var data = fs.readFileSync(`${__dirname}/words.json`);
   data = JSON.parse(data);
   await saveWord(data);
 }
