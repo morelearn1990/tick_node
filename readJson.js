@@ -1,4 +1,5 @@
 const wordModel = require('./mongo');
+const fs = require('fs');
 
 readJsonFile();
 
