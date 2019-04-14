@@ -1,7 +1,8 @@
 const wordModel = require("./mongo");
 const request = require("request");
+const qs = require("qs");
 
-const wordUrl = "https://fanyi.baidu.com/basetrans";
+const wordUrl = "https://fanyi.baidu.com/sug";
 const LENGTH = 20000; // 总单词数量 先来20000
 const FIRSR = 0;
 
@@ -23,14 +24,15 @@ async function fetchWordsAndSave(data) {
 async function fetchMeaning(word) {
   return new Promise((resolve, reject) => {
     let headers = {
-      "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Mobile Safari/537.36"
+      "User-Agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Mobile Safari/537.36",
+      "Content-Type": "application/x-www-form-urlencoded"
     };
     let formData = {
       from: "en",
       to: "zh",
       query: word
     };
-    request.post({ url: wordUrl, form: formData, headers }, function(err, httpResponse, body) {
+    request.post({ url: wordUrl, body: qs.stringify(formData), headers }, function(err, httpResponse, body) {
       if (err) {
         reject(err);
       }
