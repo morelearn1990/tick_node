@@ -1,5 +1,5 @@
-const wordModel = require('./mongo');
-const fs = require('fs');
+const word_local = require("./mongo_local");
+const fs = require("fs");
 
 readJsonFile();
 
@@ -12,11 +12,11 @@ async function readJsonFile() {
 async function saveWord(data) {
   for (let i = 0; i < data.length; i++) {
     let word = data[i];
-    let wordDoc = new wordModel({
+    let wordDoc = new word_local({
       order: i,
       word
     });
     await wordDoc.save();
-    console.log('i', i);
+    console.log(i);
   }
 }
